@@ -11,17 +11,28 @@
 {
     @Html.HiddenFor(m => m.Id)
     @Html.ValidationSummary(true)
+
     <p>
-        @Html.LabelFor(model => model.FirstName, "Имя: ")
+        @Html.LabelFor(
+            model => model.FirstName,
+            "Имя: ")
         @Html.TextBoxFor(m => m.FirstName)
-        @Html.ValidationMessageFor(m => m.FirstName)
+        @Html.ValidationMessageFor(
+            m => m.FirstName,
+            null,
+            new { @class = "error-message" })
     </p>
 
     <p>
 
-        @Html.LabelFor(m => m.LastName, "Фамилия: ")
+        @Html.LabelFor(
+            m => m.LastName,
+            "Фамилия: ")
         @Html.TextBoxFor(m => m.LastName)
-        @Html.ValidationMessageFor(m => m.LastName)
+        @Html.ValidationMessageFor(
+            m => m.LastName,
+            null,
+            new { @class = "error-message" })
     </p>
 
     <p>
@@ -33,5 +44,5 @@
     </p>
 
     <input type="submit" value="Сохранить" />
-    <input type="submit" value="Отмена" />
+    <input type="button" value="Отмена" onclick="location.href='@Url.Action("Index")'"/>
 }

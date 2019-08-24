@@ -11,7 +11,18 @@
 *.suo
 # Include dlls if they’re in the NuGet packages directory
 !/packages/*/lib/*.dll
-!/packages/*/lib/*/*.dll
+img
+{
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    width: 60px;
+    height: 40px; 
+}
+h1{
+    display: inline;
+    padding-bottom: 10px;
+}!/packages/*/lib/*/*.dll
 # Include dlls if they're in the CommonReferences directory
 !*CommonReferences/*.dll
 ####################
@@ -73,3 +84,4 @@ _[Ss]cripts
 *.nupkg
 *.ncrunchsolution
 *.dot[Cc]over
+.vs
