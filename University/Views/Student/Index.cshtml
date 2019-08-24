@@ -1,0 +1,28 @@
+﻿@model List<CourseModel>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Index";
+}
+
+@foreach (var course in Model)
+{
+    <div class="course">
+        @course.Id &ndash; @course.Name (@course.Students.Count())
+    </div>
+    <div class="student-create">
+        @Html.ActionLink("Добавить студента", "Create", "Student", new { courseId = course.Id })
+    </div>
+
+    @foreach (var student in course.Students)
+    {
+        <div class="student-info">
+            @student.LastName
+            @student.FirstName
+        </div>
+        <div class="student-ud">
+            @Html.ActionLink("Редактировать", "Update", "Student", new { id = student.Id })
+            @Html.ActionLink("Удалить", "Delete", "Student", new { id = student.Id })
+        </div>
+    }
+}
+

@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+
+    <meta name="viewport" content="width=device-width" />
+    <link href="@Url.Content("~/css/site.css")" type="text/css" rel="stylesheet" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <header>
+        <div class="row">
+            <img src="image.png">
+            <h1>Списки студентов</h1>
+        </div>
+    </header>
+    <hr />
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>

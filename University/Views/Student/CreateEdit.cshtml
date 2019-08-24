@@ -1,0 +1,37 @@
+﻿@model StudentModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "CreateEdit";
+}
+
+
+<h3>Студент</h3>
+
+@using (Html.BeginForm("CreateEdit"))
+{
+    @Html.HiddenFor(m => m.Id)
+    @Html.ValidationSummary(true)
+    <p>
+        @Html.LabelFor(model => model.FirstName, "Имя: ")
+        @Html.TextBoxFor(m => m.FirstName)
+        @Html.ValidationMessageFor(m => m.FirstName)
+    </p>
+
+    <p>
+
+        @Html.LabelFor(m => m.LastName, "Фамилия: ")
+        @Html.TextBoxFor(m => m.LastName)
+        @Html.ValidationMessageFor(m => m.LastName)
+    </p>
+
+    <p>
+
+        <partial>
+            @await Html.PartialAsync("_CourcePartial")
+        </partial>
+
+    </p>
+
+    <input type="submit" value="Сохранить" />
+    <input type="submit" value="Отмена" />
+}

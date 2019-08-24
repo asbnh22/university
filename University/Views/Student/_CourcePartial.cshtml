@@ -1,0 +1,12 @@
+﻿@model StudentModel
+
+    <div class="col-md-10">
+        @Html.LabelFor(m => m.CourseId, "Группа: ")
+
+        <select id="CourseId" name="CourseId">
+            @foreach (SelectListItem c in ViewBag.CourseId)
+            {
+                <option value="@c.Value" selected="@c.Selected">@c.Value &ndash; @c.Text</option>
+            }
+        </select>
+    </div>
