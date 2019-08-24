@@ -15,9 +15,9 @@ namespace University.Models
         [Required(ErrorMessage = "Фамилия студента не может быть пустой")]
         public string LastName { get; set; }
 
-        public int? CourseId { get; set; }
+        public int CourseId { get; set; }
 
-       // [ForeignKey("CourseId")]
+        [ForeignKey("CourseId")]
         public virtual CourseModel Course { get; set; }
     }
 }

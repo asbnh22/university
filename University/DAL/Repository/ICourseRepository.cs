@@ -8,6 +8,5 @@ namespace University.DAL.Repository
     {
         List<Course> GetCoursesWithStudents();
         List<Course> GetCourses();
-        void Save();
     }
 }

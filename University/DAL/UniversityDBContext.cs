@@ -1,8 +1,5 @@
-﻿using System.Configuration;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Protocols;
+﻿using Microsoft.EntityFrameworkCore;
 using University.DAL.DTO;
-using University.Models;
 
 namespace University.DAL
 {
@@ -13,19 +10,13 @@ namespace University.DAL
         {
 
         }
-        /*protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer(ConfigurationManager.ConnectionStrings["UniversityDb"].ConnectionString);
-        }*/
-
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Student>()
             .HasOne<Course>(s => s.Course)
             .WithMany(g => g.Students)
-            //.HasForeignKey(s => s.CourseId)
-            ;
+            .HasForeignKey(s => s.CourseId);
 
             modelBuilder.Entity<Course>().ToTable("Courses");
             modelBuilder.Entity<Student>().ToTable("Students");
@@ -43,7 +34,7 @@ namespace University.DAL
 
         public DbSet<Student> Students { get; set; }
         public DbSet<Course> Courses { get; set; }
-        public DbSet<University.Models.StudentModel> StudentModel { get; set; }
-        public DbSet<University.Models.CourseModel> CourseModel { get; set; }
+        public DbSet<Models.StudentModel> StudentModel { get; set; }
+        public DbSet<Models.CourseModel> CourseModel { get; set; }
     }
 }

@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using University.DAL.Repository;
 using University.DAL.DTO;
 
 namespace University.DAL
 {
-    public class StudentRepository : IStudentRepository, IDisposable
+    public class StudentRepository : IStudentRepository
     {
         private readonly UniversityDBContext _context;
 
@@ -17,9 +15,9 @@ namespace University.DAL
             this._context = context;
         }
 
-        public List<Student> GetByCourseId(int courseId)
+        public Student Find(int id)
         {
-            return _context.Students.Where(student => student.CourseId == courseId).ToList();
+            return _context.Students.Find(id);
         }
 
         public void Insert(Student student)
@@ -27,12 +25,6 @@ namespace University.DAL
             _context.Students.Add(student);
             _context.SaveChanges();
         }
-
-        public Student Find(int id)
-        {
-           return _context.Students.Find(id);
-        }
-
 
         public void Update(Student student)
         {
@@ -46,24 +38,18 @@ namespace University.DAL
             _context.SaveChanges();
         }
 
-        public void RemoveRange()
-        {
-            _context.Students.RemoveRange(_context.Students);
-            _context.SaveChanges();
-        }
-
-        private bool _disposed = false;
+        public bool Disposed { get; set; }
 
         protected virtual void Dispose(bool disposing)
         {
-            if (!this._disposed)
+            if (!this.Disposed)
             {
                 if (disposing)
                 {
                     _context.Dispose();
                 }
             }
-            this._disposed = true;
+            this.Disposed = true;
         }
 
         public void Dispose()

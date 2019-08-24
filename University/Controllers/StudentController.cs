@@ -20,11 +20,14 @@ namespace University.Controllers
 
         private void SetCourseViewBag(int? CourseId = null)
         {
-
-            if (CourseId == null)
-                ViewBag.CourseId = new SelectList(_courseRepository.GetCourses(), "Id", "Name");
-            else
-                ViewBag.CourseId = new SelectList(_courseRepository.GetCourses(), "Id", "Name", CourseId);
+            ViewBag.CourseId = CourseId == null
+                ? new SelectList(_courseRepository.GetCourses(),
+                    "Id",
+                    "Name")
+                : new SelectList(_courseRepository.GetCourses(),
+                    "Id",
+                    "Name",
+                    CourseId);
         }
 
         public IActionResult Index()

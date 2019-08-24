@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using University.DAL.DTO;
 using University.Models;
 
@@ -17,7 +13,7 @@ namespace University.Common
                 Id = entity.Id,
                 FirstName = entity.FirstName,
                 LastName = entity.LastName,
-                CourseId = entity.CourseId.Value
+                CourseId = entity.CourseId
             };
         }
 

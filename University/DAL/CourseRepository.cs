@@ -2,14 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using University.DAL.Repository;
 using University.DAL.DTO;
 
 namespace University.DAL
 {
-    internal class CourseRepository : ICourseRepository, IDisposable
+    internal class CourseRepository : ICourseRepository
     {
         private readonly UniversityDBContext _context;
 
@@ -35,18 +33,18 @@ namespace University.DAL
 
         }
 
-        private bool _disposed = false;
+        public bool Disposed { get; private set; }
 
         protected virtual void Dispose(bool disposing)
         {
-            if (!this._disposed)
+            if (!this.Disposed)
             {
                 if (disposing)
                 {
                     _context.Dispose();
                 }
             }
-            this._disposed = true;
+            this.Disposed = true;
         }
 
         public void Dispose()
